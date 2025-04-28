@@ -22,7 +22,7 @@ Item {
             y: 2 * scaleFactor
             z: 2
             opacity: 1
-            source: "../moon/" + moonPhase + ".png"
+            source: "../moon/" + sanitizePhaseName(moonPhase) + ".png"
 
             MouseArea {
                 id: mouseMoon
@@ -36,13 +36,12 @@ Item {
 
             Rectangle {
                 id: backgroundRect
-                width: 60 * scaleFactor
+                width: 80 * scaleFactor
                 height: 15 * scaleFactor
                 color: "lightgray"
                 radius: 2 * scaleFactor
-                x: moonLabelIlu.x - 5 * scaleFactor
+                x: moonLabelIlu.x - 15 * scaleFactor
                 y: moonLabelIlu.y + 24 * scaleFactor
-
             }
         }
     }
@@ -50,7 +49,7 @@ Item {
     // Content text
     Column {
         id: moonTexts
-        x: -35 * scaleFactor
+        x: -65 * scaleFactor
         y: 80 * scaleFactor
         z: 3
 
@@ -111,6 +110,11 @@ Item {
             }
         ]
     }
+    // Replace " " by "_"
+    function sanitizePhaseName(phaseName) {
+        return phaseName.replace(/\s/g, "_");
+    }
+
 }
 
 
