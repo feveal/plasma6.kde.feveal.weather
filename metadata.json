@@ -1,0 +1,21 @@
+{
+	"KPackageStructure": "Plasma/Applet",
+	"KPlugin": {
+		"Authors": [
+			{
+				"Email": "feveal@hotmail.com",
+				"Name": "Fernando Velez"
+			}
+		],
+		"Category": "Weather",
+		"Description": "Weather Temperature and Moon data in Old Barometer",
+		"Description[es]": "El Tiempo y datos de la Luna en Barómetro antiguo",
+		"Icon": "weather-clear",
+		"Id": "kde.feveal.weather",
+		"Name": "Weather Baro",
+		"Name[es]": "El tiempo en Barómetro",
+		"Version": "2.0",
+		"Website": "https://github.com/feveal/plasma6.kde.feveal.weather"
+	},
+	"X-Plasma-API-Minimum-Version": "6.0"
+}
