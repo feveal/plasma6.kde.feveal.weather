@@ -19,7 +19,7 @@ Image {
         Item {
 
             Image {
-                x:62 * scaleFactor
+                x:75 * scaleFactor
                 y:260 * scaleFactor
 
                 width: 92 * scaleFactor
