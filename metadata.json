@@ -15,7 +15,7 @@
 		"Name": "Weather Baro",
 		"Name[es]": "El tiempo en Barómetro",
 		"Version": "2.0",
-		"Website": "https://github.com/feveal/plasma6.kde.feveal.weather"
+		"Website": "https://github.com/feveal/plasma6.kde.feveal.weather/tree/main"
 	},
 	"X-Plasma-API-Minimum-Version": "6.0"
 }
