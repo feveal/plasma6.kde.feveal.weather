@@ -6,7 +6,7 @@ You can change the temperature units between Celsius, Fahrenheit and Kelvin. Als
 **NOTE:** Please note that all servers do not provide certain data, for example "wetter.com" does not provide current temperature or wind speed, therefore you will not see the current temperature data, the needle will not be visible, and the anemometer will not spin. If they are available for your location, use other servers such as BBC or NOAA.
 
 ## Screenshots
-![]([https://github.com/feveal/plasma6.kde.feveal.weather/blob/main/Screenshot_baro.png])
+![](https://github.com/feveal/plasma6.kde.feveal.weather/blob/main/Screenshot_baro.png)
 -
 ![](https://github.com/feveal/plasma6.kde.feveal.weather/blob/main/plasma_baro.mp4)
 -
