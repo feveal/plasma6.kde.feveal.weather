@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kcfg xmlns="http://www.kde.org/standards/kcfg/1.0"
+	  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	  xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0
+	  http://www.kde.org/standards/kcfg/1.0/kcfg.xsd">
+	<kcfgfile name=""/>
+
+	<group name="Location">
+		<entry name="provider" type="string">
+			<default>metno</default>
+		</entry>
+		<entry name="locationId" type="string">
+			<default></default>
+		</entry>
+		<entry name="latitude" type="real">
+			<default></default>
+		</entry>
+		<entry name="longitude" type="real">
+			<default></default>
+		</entry>
+		<entry name="altitude" type="real">
+		<default></default>
+		</entry>
+		<entry name="timezoneOffset" type="int">
+			<default>2</default>
+		</entry>
+		<entry name="openWeatherMapApiKey" type="string">
+			<default></default>
+		</entry>
+		<entry name="cityName" type="string">
+			<default></default>
+		</entry>
+	</group>
+
+	<group name="Apearance">
+		<entry name="showBackground" type="bool">
+			<default>true</default>
+		</entry>
+		<entry name="updateInterval" type="int">
+			<default>30</default>
+		</entry>
+
+		<entry name="fontFamily" type="string">
+			<default></default>
+		</entry>
+		<entry name="bold" type="bool">
+			<default>false</default>
+		</entry>
+		<entry name="showDailyBackground" type="bool">
+			<default>false</default>
+		</entry>
+		<entry name="showMinTempBelow" type="bool">
+			<default>true</default>
+		</entry>
+		<entry name="showNumDays" type="int">
+			<label>0 will show all days available. 1 .. 14 will limit the number of days shown.</label>
+		<default>5</default>
+		</entry>
+		<entry name="showDetails" type="bool">
+			<default>true</default>
+		</entry>
+		<entry name="forecastFontSize" type="int">
+			<default>12</default>
+		</entry>
+		<entry name="tempFontSize" type="int">
+			<default>40</default>
+		</entry>
+		<entry name="dateFontSize" type="int">
+			<default>12</default>
+		</entry>
+		<entry name="minMaxFontSize" type="int">
+			<default>10</default>
+		</entry>
+		<entry name="detailsFontSize" type="int">
+			<default>12</default>
+		</entry>
+		<entry name="textColor" type="string">
+			<default>#FFFFFF</default>
+		</entry>
+		<entry name="outlineColor" type="string">
+			<default>#000000</default>
+		</entry>
+		<entry name="showOutline" type="bool">
+			<default>false</default>
+		</entry>
+	</group>
+
+	<group name="Units">
+		<!-- See https://github.com/KDE/kunitconversion/blob/master/src/unit.h -->
+		<entry name="temperatureUnitId" type="int">
+			<label>Temperature unit (0=Celsius, 1=Fahrenheit, 2=Kelvin)</label>
+		<default></default>
+		</entry>
+		<entry name="windSpeedUnitId" type="int">
+			<label>LocaleDefault = 0, MeterPerSecond = 9000, KilometerPerHour = 9001, MilePerHour = 9002, Knot = 9005, Beaufort = 9008</label>
+		<default></default>
+		</entry>
+		<entry name="pressureUnitId" type="int">
+			<label>Pressure unit (0=hPa, 1=mbar, 2=mmHg, 3=inHg)</label>
+		<default></default>
+		</entry>
+		<entry name="visibilityUnitId" type="int">
+			<label>Visibility unit (0=km, 1=miles)</label>
+		<default></default>
+		</entry>
+		</group>
+</kcfg>

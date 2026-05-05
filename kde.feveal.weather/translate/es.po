@@ -1,0 +1,198 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: com.baro-plasma\n"
+"Report-Msgid-Bugs-To: feveal@hotmail.comPOT-Creation-Date: 2024-01-21 13:04+0100\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2026-05-04 01:59+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.9\n"
+
+#: ../metadata.desktop
+msgid "Weather Baro"
+msgstr ""
+
+#: ../contents/ui/Main.qml
+msgid "Refresh"
+msgstr "Refrescar"
+
+#: ../contents/ui/CurrentWeatherView.qml
+msgid "Updated at %1"
+msgstr "Actualizado a las %1"
+
+#: ../contents/ui/libweather/WeatherStationPickerDialog.qml
+msgid "Select Weather Station"
+msgstr "Seleccionar estación meteorológica"
+
+msgid "Select"
+msgstr "Seleccionar"
+
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: ../contents/ui/libweather/WeaterData.qml
+msgid "Wind:"
+msgstr "Viento:"
+
+msgid "Humidity:"
+msgstr "Humedad:"
+
+msgid "Cloudiness:"
+msgstr "Nubosidad:"
+
+msgid "Windchill:"
+msgstr "Baja sensación térmica:"
+
+msgid "Short for tonight"
+msgstr "Frío por la noche"
+
+msgid "nite"
+msgstr "noche"
+
+msgid "certain weather condition"
+msgstr "condiciones climaticas"
+
+#: ../contents/ui/config/ConfigGeneral.qml
+msgid "Update every:"
+msgstr "Actualizar cada:"
+
+msgid "Show weather details"
+msgstr "Ver detalles"
+
+#: ../contents/config/ConfigWeather.qml
+msgctxt "@title"
+msgid "Font Appearance"
+msgstr "Apariencia de Fuentes"
+
+msgctxt "@title"
+msgid "Units"
+msgstr "Unidades"
+
+msgid "Weather provider:"
+msgstr "Proveedor de clima:"
+
+msgid "City name:"
+msgstr "Nombre de Ciudad:"
+
+msgid "Latitude:"
+msgstr "Latitud:"
+
+msgid "Longitude:"
+msgstr "Longitud:"
+
+msgid "Update interval (minutes):"
+msgstr "Actualizar cada (minutos):"
+
+#: ../contents/ui/config/ConfigAppearance.qml
+msgid "Font Family:"
+msgstr "Familia de Fuente:"
+
+msgid "Forecast:"
+msgstr "Predicción:"
+
+msgid "Temp:"
+msgstr "Temperatura:"
+
+msgid "Date:"
+msgstr "Fecha:"
+
+msgid "Details:"
+msgstr "Detalles:"
+
+msgid "Text Color:"
+msgstr "Color de Texto:"
+
+msgid "Outline:"
+msgstr "Borde de carácter:"
+
+#: ../contents/ui/config/libweather/ConfigUnits.qml
+msgid "Temperature:"
+msgstr "Temperatura:"
+
+msgid "Pressure:"
+msgstr "Presión:"
+
+msgid "Wind speed:"
+msgstr "Velocidad del Viento:"
+
+msgid "Visibility:"
+msgstr "Visibilidad:"
+
+#: ../contents/ui/libweather/providers/MetNo.qml
+msgid "Clear sky"
+msgstr "Cielo despejado"
+
+msgid "Cloudy"
+msgstr "Nublado"
+
+msgid "Fair"
+msgstr "Despejado"
+
+msgid "Fog"
+msgstr "Niebla"
+
+msgid "Heavy rain"
+msgstr "Lluvia intensa"
+
+msgid "Light rain"
+msgstr "Lluvia ligera"
+
+msgid "Partly cloudy"
+msgstr "Parcialmente nublado"
+
+msgid "Rain"
+msgstr "Lluvia"
+
+msgid "Rain showers"
+msgstr "Chubascos"
+
+msgid "Snow"
+msgstr "Nieve"
+
+msgid "Sleet"
+msgstr "Aguanieve"
+
+msgid "Variable conditions"
+msgstr "Condiciones variables"
+
+msgid "Windy"
+msgstr "Ventoso"
+
+msgid "Strong wind"
+msgstr "Viento fuerte"
+
+#: ../contents/ui/moon/Moon.qml
+msgid " Lightning: "
+msgstr " Iliminacion: "
+
+msgid " days for "
+msgstr " dias para "
+
+msgid "Full Moon"
+msgstr "Luna llena"
+
+msgid "New Moon"
+msgstr "Luna nueva"
+
+msgid "First Quarter"
+msgstr "Cuarto creciente"
+
+msgid "Last Quarter"
+msgstr "Cuarto menguante"
+
+msgid "Waning Crescent"
+msgstr "Menguante"
+
+msgid "Waning Gibbous"
+msgstr "Menguante"
+
+msgid "Waxing Crescent"
+msgstr "Creciente"
+
+msgid "Waxing Gibbous"
+msgstr "Creciente"
