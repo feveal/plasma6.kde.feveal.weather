@@ -114,9 +114,9 @@ Item {
         url2 = urlPrefix + '/forecast/daily?id=' + placeIdentifier + '&cnt=9' + appIdAndModeSuffix + versionParam
         url3 = urlPrefix + '/forecast?id=' + placeIdentifier + appIdAndModeSuffix + versionParam
 
-        //        dbgprint("xmlModelCurrent = " + url1)
-        //        dbgprint("xmlModelLongTerm = " + url2)
-        //        dbgprint("xmlModelHourByHour = " + url3)
+        dbgprint("xmlModelCurrent = " + url1)
+        dbgprint("xmlModelLongTerm = " + url2)
+        dbgprint("xmlModelHourByHour = " + url3)
 
         xmlModelCurrent.source = url1
         xmlModelLongTerm.source = url2
@@ -645,6 +645,9 @@ Item {
 //            console.log("getWeatherInfo: invalid code", owmCode)
             return info
         }
+
+        // Determinar sufijo según día/noche
+        var suffix = isDay ? "" : "-night"
 
         // Despejado
         if (code === 800) {

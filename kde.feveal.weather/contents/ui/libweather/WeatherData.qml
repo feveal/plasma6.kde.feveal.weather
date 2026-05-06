@@ -46,33 +46,6 @@ QtObject {
 	// Función principal para cargar datos
 	// ------------------------------------------------------------------
 	function refresh() {
-/*
-		console.log("=== WeatherData.refresh() called ===")
-		console.log("locationId:", plasmoid.configuration.locationId)
-		console.log("latitude:", plasmoid.configuration.latitude)
-		console.log("longitude:", plasmoid.configuration.longitude)
-		console.log("provider:", plasmoid.configuration.provider)
-
-		if (!plasmoid.configuration.locationId &&
-			(!plasmoid.configuration.latitude || !plasmoid.configuration.longitude)) {
-			console.log("ERROR: No location configured!")
-			return
-			}
-
-			if (!selectedProvider) {
-				console.warn("WeatherData: Provider not configured")
-				return
-			}
-
-			if (!locationId && (!latitude || !longitude)) {
-				console.warn("WeatherData: No location configured (need locationId or lat/lon)")
-				return
-			}
-
-		isLoading = true
-		errorMessage = ""
-*/
-		// Crear o recargar el proveedor
 		loadProvider()
 	}
 
@@ -219,17 +192,7 @@ QtObject {
 					location = activeProvider.currentWeatherModel.cityName
 //					console.log("OWM city name:", location)
 				}
-/*
-				if (activeProvider.nextDaysModel) {
-					for (var i = 0; i < activeProvider.nextDaysModel.count; i++) {
-						var item = activeProvider.nextDaysModel.get(i)
-						console.log("Row " + i + ": dayLabel=" + item.dayLabel +
-						", tempLow=" + item.tempLow +
-						", tempHigh=" + item.tempHigh +
-						", forecastIcon=" + item.forecastIcon)
-					}
-				}
-*/
+
 				currentConditions = activeProvider.currentWeatherModel?.conditionDescription ||
 				activeProvider.currentWeatherModel?.description ||
 				"Weather data available"

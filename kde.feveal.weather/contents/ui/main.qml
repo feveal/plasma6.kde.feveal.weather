@@ -138,8 +138,10 @@ PlasmoidItem {
             PlasmaCore.Action {
                 text: i18n("Refresh")
                 icon.name: "view-refresh"
-//                onTriggered: weatherData.refresh()
-                onTriggered: action_refresh()
+                onTriggered: {
+                    console.log("Refresh triggered")
+                    weatherData.refresh()
+                }
             }
         ]
     }

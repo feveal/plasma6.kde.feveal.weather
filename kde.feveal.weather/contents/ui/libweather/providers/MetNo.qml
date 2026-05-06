@@ -51,11 +51,11 @@ property var meteogramModel: ListModel { id: meteogramListModel }
     }
 
     function dbgprint(msg) {
-        //        console.log("OWM DEBUG:", msg)
+//        console.log("OWM DEBUG:", msg)
     }
 
     function dbgprint2(msg) {
-        //        console.log("OWM DEBUG2:", msg)
+//        console.log("OWM DEBUG2:", msg)
     }
 
     function getCreditLink(placeIdentifier) {
@@ -276,6 +276,7 @@ property var meteogramModel: ListModel { id: meteogramListModel }
                     nextDaysData['hidden' + y] = false
                     let obj = wd[wdPtr].data.next_1_hours.summary["symbol_code"]
                     nextDaysData['iconName' + y] = geticonNumber(obj)
+
                     nextDaysData['partOfDay' + y] = isDayTime
                     if (y == 3) {
                         dailyForecastModel.append(nextDaysData)
@@ -389,6 +390,7 @@ property var meteogramModel: ListModel { id: meteogramListModel }
             let sign = (seconds >= 0) ? "+" : "-"
             return(sign + hrs + ":" + mins)
         }
+
     }
 
     function reloadMeteogramImage(placeIdentifier) {
@@ -396,10 +398,16 @@ property var meteogramModel: ListModel { id: meteogramListModel }
     }
 
     function geticonNumber(text) {
-        var codes = {
+        var parts = text.split("_")
+        var baseCode = parts[0]
+        var suffix = parts[1] || ""
+        var isNight = (suffix === "_night")
+
+        var baseIcon = {
             "clearsky": "weather-clear",
-            "cloudy": "weather-clouds",
             "fair": "weather-few-clouds",
+            "partlycloudy": "weather-clouds",
+            "cloudy": "weather-clouds",
             "fog": "weather-fog",
             "heavyrain": "weather-showers",
             "heavyrainandthunder": "weather-storm",
@@ -425,7 +433,6 @@ property var meteogramModel: ListModel { id: meteogramListModel }
             "lightsnowshowers": "weather-snow",
             "lightssleetshowersandthunder": "weather-storm",
             "lightssnowshowersandthunder": "weather-storm",
-            "partlycloudy": "weather-clouds",
             "rain": "weather-freezing-rain",
             "rainandthunder": "weather-storm",
             "rainshowers": "weather-showers",
@@ -439,12 +446,15 @@ property var meteogramModel: ListModel { id: meteogramListModel }
             "snowshowers": "weather-snow",
             "snowshowersandthunder": "weather-storm"
         }
-        var underscore = text.indexOf("_")
-        if (underscore > -1) {
-            text = text.substr(0,underscore)
-        }
-        var num = codes[text]
-        return num
+        var iconName = baseIcon[baseCode]
+        if (!iconName) return "weather-none-available"
+
+            // Añadir sufijo nocturno solo para ciertos iconos
+            if (isNight && (baseCode === "clearsky" || baseCode === "fair" || baseCode === "partlycloudy")) {
+                return iconName + "-night"
+            }
+
+            return iconName
     }
 
     function windDirection(bearing) {

@@ -41,7 +41,7 @@ Item {
 
 		// Temp position
 		x: -16 * scaleFactor
-		y: 280 * scaleFactor
+		y: 260 * scaleFactor
 
 		Layout.fillHeight: true
 

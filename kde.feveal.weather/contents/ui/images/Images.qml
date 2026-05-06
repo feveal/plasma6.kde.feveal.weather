@@ -19,8 +19,9 @@ Image {
         Item {
 
             Image {
-                x:80 * scaleFactor
-                y:260 * scaleFactor
+                x: 80 * scaleFactor
+                y: 260 * scaleFactor
+                z: 2
 
                 width: 110 * scaleFactor
                 height: 84 * scaleFactor
@@ -34,7 +35,9 @@ Image {
 
                 MouseArea {
                     id: mouseDetails
+                    anchors.fill: parent
                     cursorShape: Qt.PointingHandCursor
+                    hoverEnabled: true
 
                     ColumnLayout {
                         x: -100 * scaleFactor

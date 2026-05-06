@@ -4,7 +4,7 @@ This Plasmoid provides weather forecast on the image of an old barometer. The ne
 You can change the temperature units between Celsius, Fahrenheit and Kelvin. Also change the font size and color.
 
 ## Screenshots
-![](Screenshot_baro.png)
+![](screenshot_baro.png)
 -
 ![](plasma_baro.mp4)
 -
