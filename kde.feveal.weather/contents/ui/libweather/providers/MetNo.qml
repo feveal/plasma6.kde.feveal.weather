@@ -154,9 +154,8 @@ property var meteogramModel: ListModel { id: meteogramListModel }
 
             for (var d = 0; d < dailyForecast.length; d++) {
                 var weatherCode = dailyForecast[d].weatherCode || "unknown"
-                var iconNumber = geticonNumber(weatherCode)
-
-//                console.log("Day", d, ":", dailyForecast[d].date, "Max:", dailyForecast[d].maxTemp, "Icon:", iconNumber)
+                var forecastCode = weatherCode.replace(/_night$/, "")
+                var iconNumber = geticonNumber(forecastCode)
 
                 weatherData.dailyForecastModel.append({
                     dayLabel: dailyForecast[d].date,
@@ -266,62 +265,10 @@ property var meteogramModel: ListModel { id: meteogramListModel }
                     sr = sr + 86400
                     ss = ss + 86400
                 }
-                if (displayTime.getHours() % 6 === 3) {
-                    let isDayTime =  ((lt >= sr ) && (lt <= ss)) ? 0 : 1
-                    y = Math.trunc(displayTime.getHours() / 6,0)
-                    dbgprint("wdPtr:" + wdPtr + "\t" + wd[wdPtr].time + "\t x = " + x + "\t y = " + y)
-                    dbgprint(isDayTime + "\t\t" + displayTime + "\t" + localTime+ "\t" + new Date(sr * 1000) + "\t" + new Date(ss * 1000) )
-                    nextDaysData['dayTitle'] = composeNextDayTitle(displayTime)
-                    nextDaysData['temperature' + y] = wd[wdPtr].data.instant.details["air_temperature"]
-                    nextDaysData['hidden' + y] = false
-                    let obj = wd[wdPtr].data.next_1_hours.summary["symbol_code"]
-                    nextDaysData['iconName' + y] = geticonNumber(obj)
 
-                    nextDaysData['partOfDay' + y] = isDayTime
-                    if (y == 3) {
-                        dailyForecastModel.append(nextDaysData)
-                        nextDaysData=blankObject()
-                        x++
-                    }
-
-                }
                 wdPtr++
             }
 
-            while ((wdPtr < wd.length) && (wd[wdPtr].data.next_6_hours !== undefined))
-            {
-                let t = new Date(wd[wdPtr].time)
-                t.setHours(t.getHours() + 3)
-                localTime = UnitUtils.convertDate(t, 2, currentPlace.timezoneOffset)
-                displayTime = UnitUtils.convertDate(t, main.timezoneType, offset)
-                let lt = Date.parse(localTime) / 1000
-
-                while (lt > (sr + 86400)) {
-                    dbgprint("+")
-                    sr = sr + 86400
-                    ss = ss + 86400
-                }
-                dbgprint("****\t" + displayTime.getHours())
-                {
-                    let isDayTime =  ((lt >= sr ) && (lt <= ss)) ? 0 : 1
-                    y = Math.trunc(displayTime.getHours() / 6,0)
-                    dbgprint("wdPtr:" + wdPtr + "\t" + wd[wdPtr].time + "\t x = " + x + "\t y = " + y)
-                    dbgprint(isDayTime + "\t\t" + displayTime + "\t" + localTime+ "\t" + new Date(sr * 1000) + "\t" + new Date(ss * 1000) )
-                    dbgprint("\t\t" + displayTime + "\t" + lt+ "\t" + (sr) + "\t" + (ss) )
-                    nextDaysData['dayTitle'] = composeNextDayTitle(displayTime)
-                    nextDaysData['temperature' + y] = wd[wdPtr].data.instant.details["air_temperature"]
-                    nextDaysData['hidden' + y] = false
-                    let obj = wd[wdPtr].data.next_6_hours.summary["symbol_code"]
-                    nextDaysData['iconName' + y] = geticonNumber(obj)
-                    nextDaysData['partOfDay' + y] = isDayTime
-                    if ((y == 3) && (x < 7)) {
-                        dailyForecastModel.append(nextDaysData)
-                        nextDaysData=blankObject()
-                        x++
-                    }
-                }
-                wdPtr++
-            }
             if ((y < 3) && (x < 7)) {
                  dailyForecastModel.append(nextDaysData)
             }
@@ -397,11 +344,10 @@ property var meteogramModel: ListModel { id: meteogramListModel }
         main.overviewImageSource = ""
     }
 
-    function geticonNumber(text) {
+    function geticonNumber(text, forceDay) {
         var parts = text.split("_")
         var baseCode = parts[0]
         var suffix = parts[1] || ""
-        var isNight = (suffix === "_night")
 
         var baseIcon = {
             "clearsky": "weather-clear",
@@ -450,7 +396,7 @@ property var meteogramModel: ListModel { id: meteogramListModel }
         if (!iconName) return "weather-none-available"
 
             // Añadir sufijo nocturno solo para ciertos iconos
-            if (isNight && (baseCode === "clearsky" || baseCode === "fair" || baseCode === "partlycloudy")) {
+            if (suffix === "night" && (baseCode === "clearsky" || baseCode === "fair" || baseCode === "partlycloudy")) {
                 return iconName + "-night"
             }
 

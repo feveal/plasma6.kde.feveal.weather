@@ -132,7 +132,7 @@ Item {
         let obj = xmlModelCurrent.get(0)
         let obj2 = xmlModelHourByHour.get(1)
 
-        var weatherInfo = getWeatherInfo(obj.iconName, currentWeatherModel.isDay === 0)
+        var weatherInfo = getWeatherInfo(obj.iconName, isDaytime)
 
         // Llenar currentWeatherModel
         currentWeatherModel.temperature = parseFloat(obj.temperature)
@@ -145,8 +145,6 @@ Item {
         currentWeatherModel.cloudiness = parseFloat(obj.cloudiness)
         currentWeatherModel.cityName = obj.cityName
 
-        var weatherInfo = getWeatherInfo(obj.iconName, currentWeatherModel.isDay === 0)
-
         var weatherInfoFuture = getWeatherInfo(obj2.iconName, currentWeatherModel.isDay === 0)
         currentWeatherModel.nearFutureWeather = {
             iconName: weatherInfoFuture.iconName,
@@ -156,6 +154,10 @@ Item {
         let sunRise = Date.parse(obj.rise)
         let sunSet = Date.parse(obj.set)
         let updated = Date.parse(obj.updated)
+
+        // isDaytime = true si es de día, false si es de noche
+        var isDaytime = (updated > sunRise && updated < sunSet)
+
         let tzms = parseInt(obj.timezoneOffset) * 1000
 
         currentPlace.timezoneOffset = parseInt(obj.timezoneOffset)
@@ -178,8 +180,6 @@ Item {
         dbgprint2("isDay: " + currentWeatherModel.isDay)
         dbgprint2("=================================")
         dbgprint2('EXIT updatecurrentWeather')
-
-
     }
 
     function updateNextDaysModel() {
@@ -557,6 +557,7 @@ Item {
             return o
         }
     }
+
     onXmlModelLongTermStatusChanged: {
         if (xmlModelLongTerm.status == XmlListModel.Error) {
             dbgprint(xmlModelLongTerm.errorString())
@@ -607,7 +608,6 @@ Item {
 
     property alias currentWeatherModel: currentWeatherModel
     property alias nextDaysModel: nextDaysModel
-//    property alias meteogramModel: meteogramModel
 
     QtObject {
         id: currentWeatherModel
@@ -633,8 +633,7 @@ Item {
         id: nextDaysModel
     }
 
-    // Función que devuelve objeto con icono y descripción
-    function getWeatherInfo(owmCode, isDay) {
+    function getWeatherInfo(owmCode, isDaytime) {
         var code = parseInt(owmCode)
         var info = {
             iconName: "weather-none-available",
@@ -642,74 +641,48 @@ Item {
         }
 
         if (isNaN(code)) {
-//            console.log("getWeatherInfo: invalid code", owmCode)
             return info
         }
 
-        // Determinar sufijo según día/noche
-        var suffix = isDay ? "" : "-night"
+        // Determinar sufijo: si es de día, sin sufijo; si es de noche, "-night"
+        var suffix = isDaytime ? "" : "-night"
 
-        // Despejado
+        // Mapeo de códigos
         if (code === 800) {
-            info.iconName = "weather-clear"
-            info.description = "Clear sky"
-            return info
+            info.iconName = "weather-clear" + suffix
+            info.description = isDaytime ? "Clear sky" : "Clear night"
         }
-
-        // Poco nublado
-        if (code === 801) {
-            info.iconName = "weather-few-clouds"
-            info.description = "Few clouds"
-            return info
+        else if (code === 801) {
+            info.iconName = "weather-few-clouds" + suffix
+            info.description = isDaytime ? "Few clouds" : "Few clouds at night"
         }
-
-        // Nublado
-        if (code === 802 || code === 803) {
-            info.iconName = "weather-clouds"
+        else if (code === 802 || code === 803) {
+            info.iconName = "weather-clouds" + (isDaytime ? "" : "-night")
             info.description = "Cloudy"
-            return info
         }
-
-        // Muy nublado
-        if (code === 804) {
+        else if (code === 804) {
             info.iconName = "weather-overcast"
             info.description = "Overcast"
-            return info
         }
-
-        // Llovizna
-        if (code >= 300 && code <= 399) {
+        else if (code >= 300 && code <= 399) {
             info.iconName = "weather-drizzle"
             info.description = "Drizzle"
-            return info
         }
-
-        // Lluvia
-        if (code >= 500 && code <= 531) {
+        else if (code >= 500 && code <= 531) {
             info.iconName = "weather-showers"
             info.description = "Rain"
-            return info
         }
-
-        // Tormenta
-        if (code >= 200 && code <= 232) {
+        else if (code >= 200 && code <= 232) {
             info.iconName = "weather-storm"
             info.description = "Thunderstorm"
-            return info
         }
-
-        // Nieve
-        if (code >= 600 && code <= 622) {
+        else if (code >= 600 && code <= 622) {
             info.iconName = "weather-snow"
             info.description = "Snow"
-            return info
         }
-
-        // Niebla
-        if (code >= 700 && code <= 781) {
+        else if (code >= 700 && code <= 781) {
             info.iconName = "weather-fog"
             info.description = "Fog"
-            return info
         }
 
         return info

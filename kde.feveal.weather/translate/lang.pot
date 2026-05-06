@@ -6,7 +6,7 @@ msgstr ""
 "PO-Revision-Date: 2026-05-06 23:29+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
-"Language: es\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -19,199 +19,199 @@ msgstr ""
 
 #: ../contents/ui/Main.qml
 msgid "Refresh"
-msgstr "Refrescar"
+msgstr ""
 
 #: ../contents/ui/CurrentWeatherView.qml
 msgid "Updated at %1"
-msgstr "Actualizado a las %1"
+msgstr ""
 
 #: ../contents/ui/libweather/WeatherStationPickerDialog.qml
 msgid "Select Weather Station"
-msgstr "Seleccionar estación meteorológica"
+msgstr ""
 
 msgid "Select"
-msgstr "Seleccionar"
+msgstr ""
 
 msgid "Cancel"
-msgstr "Cancelar"
+msgstr ""
 
 #: ../contents/ui/libweather/WeaterData.qml
 msgid "Wind:"
-msgstr "Viento:"
+msgstr ""
 
 msgid "Humidity:"
-msgstr "Humedad:"
+msgstr ""
 
 msgid "Cloudiness:"
-msgstr "Nubosidad:"
+msgstr ""
 
 msgid "Windchill:"
-msgstr "Baja sensación térmica:"
+msgstr ""
 
 msgid "Short for tonight"
-msgstr "Frío por la noche"
+msgstr ""
 
 msgid "nite"
-msgstr "noche"
+msgstr ""
 
 msgid "certain weather condition"
-msgstr "condiciones climaticas"
+msgstr ""
 
 #: ../contents/ui/config/ConfigGeneral.qml
 msgid "Update every:"
-msgstr "Actualizar cada:"
+msgstr ""
 
 msgid "Show weather details"
-msgstr "Ver detalles"
+msgstr ""
 
 #: ../contents/config/ConfigWeather.qml
 msgctxt "@title"
 msgid "Font Appearance"
-msgstr "Apariencia de Fuentes"
+msgstr ""
 
 msgctxt "@title"
 msgid "Units"
-msgstr "Unidades"
+msgstr ""
 
 msgid "Weather provider:"
-msgstr "Proveedor de clima:"
+msgstr ""
 
 msgid "City name:"
-msgstr "Nombre de Ciudad:"
+msgstr ""
 
 msgid "Latitude:"
-msgstr "Latitud:"
+msgstr ""
 
 msgid "Longitude:"
-msgstr "Longitud:"
+msgstr ""
 
 msgid "Update interval (minutes):"
-msgstr "Actualizar cada (minutos):"
+msgstr ""
 
 #: ../contents/ui/config/ConfigAppearance.qml
 msgid "Font Family:"
-msgstr "Familia de Fuente:"
+msgstr ""
 
 msgid "Forecast:"
-msgstr "Predicción:"
+msgstr ""
 
 msgid "Temp:"
-msgstr "Temperatura:"
+msgstr ""
 
 msgid "Date:"
-msgstr "Fecha:"
+msgstr ""
 
 msgid "Details:"
-msgstr "Detalles:"
+msgstr ""
 
 msgid "Text Color:"
-msgstr "Color de Texto:"
+msgstr ""
 
 msgid "Outline:"
-msgstr "Borde de carácter:"
+msgstr ""
 
 #: ../contents/ui/config/libweather/ConfigUnits.qml
 msgid "Temperature:"
-msgstr "Temperatura:"
+msgstr ""
 
 msgid "Pressure:"
-msgstr "Presión:"
+msgstr ""
 
 msgid "Wind speed:"
-msgstr "Velocidad del Viento:"
+msgstr ""
 
 msgid "Visibility:"
-msgstr "Visibilidad:"
+msgstr ""
 
 #: ../contents/ui/libweather/providers/MetNo.qml
 msgid "Clear sky"
-msgstr "Cielo despejado"
+msgstr ""
 
 msgid "Cloudy"
-msgstr "Nublado"
+msgstr ""
 
 msgid "Fair"
-msgstr "Despejado"
+msgstr ""
 
 msgid "Fog"
-msgstr "Niebla"
+msgstr ""
 
 msgid "Heavy rain"
-msgstr "Lluvia intensa"
+msgstr ""
 
 msgid "Light rain"
-msgstr "Lluvia ligera"
+msgstr ""
 
 msgid "Partly cloudy"
-msgstr "Parcialmente nublado"
+msgstr ""
 
 msgid "Rain"
-msgstr "Lluvia"
+msgstr ""
 
 msgid "Rain showers"
-msgstr "Chubascos"
+msgstr ""
 
 msgid "Snow"
-msgstr "Nieve"
+msgstr ""
 
 msgid "Sleet"
-msgstr "Aguanieve"
+msgstr ""
 
 msgid "Variable conditions"
-msgstr "Condiciones variables"
+msgstr ""
 
 msgid "Windy"
-msgstr "Ventoso"
+msgstr ""
 
 msgid "Strong wind"
-msgstr "Viento fuerte"
+msgstr ""
 
 #: ../contents/ui/libweather/providers/OpenWeatherMap.qml
 msgid "Few clouds"
-msgstr "Pocas nubes"
+msgstr ""
 
 msgid "Overcast"
-msgstr "Muy nublado"
+msgstr ""
 
 msgid "Drizzle"
-msgstr "Llovizna"
+msgstr ""
 
 msgid "Thunderstorm"
-msgstr "Tormenta"
+msgstr ""
 
 msgid "Clear night"
-msgstr "Noche despejada"
+msgstr ""
 
 msgid "Few clouds at night"
-msgstr "Pocas nubes en la noche"
+msgstr ""
 
 #: ../contents/ui/moon/Moon.qml
 msgid " Lightning: "
-msgstr " Iliminacion: "
+msgstr ""
 
 msgid " days for "
-msgstr " dias para "
+msgstr ""
 
 msgid "Full Moon"
-msgstr "Luna llena"
+msgstr ""
 
 msgid "New Moon"
-msgstr "Luna nueva"
+msgstr ""
 
 msgid "First Quarter"
-msgstr "Cuarto creciente"
+msgstr ""
 
 msgid "Last Quarter"
-msgstr "Cuarto menguante"
+msgstr ""
 
 msgid "Waning Crescent"
-msgstr "Menguante"
+msgstr ""
 
 msgid "Waning Gibbous"
-msgstr "Menguante"
+msgstr ""
 
 msgid "Waxing Crescent"
-msgstr "Creciente"
+msgstr ""
 
 msgid "Waxing Gibbous"
-msgstr "Creciente"
+msgstr ""
