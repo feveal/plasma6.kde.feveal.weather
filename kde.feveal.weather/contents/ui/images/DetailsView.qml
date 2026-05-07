@@ -9,21 +9,16 @@ ColumnLayout {
 
 	property var model
 	//--- Settings
-	readonly property int detailsFontSize: plasmoid.configuration.detailsFontSize //* PlasmaCore.Units.devicePixelRatio
+	readonly property int detailsFontSize: plasmoid.configuration.detailsFontSize || 10
 
 	//--- Layout
-	// The details grid code is from org.kde.plasma.weather
-
 	GridLayout {
 		Layout.alignment: Qt.AlignTop | Qt.AlignHCenter
-
 		rowSpacing: Kirigami.Units.smallSpacing
 
 		Repeater {
 			id: labelRepeater
-
 			model: detailsView.model
-
 			delegate: Loader {
 				readonly property int rowIndex: index
 				readonly property var rowData: modelData
@@ -43,10 +38,7 @@ ColumnLayout {
 
 				sourceComponent: WLabel {
 					Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
-//					opacity: forecastLayout.fadedOpacity
-
 					text: rowData.label
-
 					font.pixelSize: detailsView.detailsFontSize
 				}
 			}

@@ -1,4 +1,4 @@
-// Version 8 - Minimal test version
+// ConfigUnits.qml
 
 import QtQuick
 import QtQuick.Controls as QQC2

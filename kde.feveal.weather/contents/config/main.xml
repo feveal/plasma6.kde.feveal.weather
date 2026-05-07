@@ -83,6 +83,13 @@
 		<entry name="showOutline" type="bool">
 			<default>false</default>
 		</entry>
+
+		<entry name="customWidth" type="int">
+			<default>300</default>
+		</entry>
+		<entry name="customHeight" type="int">
+			<default>300</default>
+		</entry>
 	</group>
 
 	<group name="Units">

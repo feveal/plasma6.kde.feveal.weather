@@ -77,11 +77,10 @@ Item {
 		Text {
 			text: i18n(weatherData.currentConditions)
 			color: plasmoid.configuration.textColor || "white"
-			font.pixelSize: 12
+			font.pixelSize: forecastFontSize // 12 * scaleFactor
 			horizontalAlignment: Text.AlignHCenter
 			Layout.alignment: Qt.AlignHCenter
 		}
-
 
 		Item {
 			WLabel {

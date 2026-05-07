@@ -7,7 +7,7 @@ import "../../code/model-utils.js" as ModelUtils
 QtObject {
 	id: weatherData
 
-	// Propiedades de configuración (las defines en tu config)
+	// Propiedades de configuración
 	property string selectedProvider: plasmoid.configuration.provider // "metno", "om", "owm"
 	property string locationId: plasmoid.configuration.locationId
 	property string location: plasmoid.configuration.cityName || ""
@@ -15,13 +15,12 @@ QtObject {
 	property double longitude: plasmoid.configuration.longitude
 	property int timezoneOffset: plasmoid.configuration.timezoneOffset
 
-	// Propiedades que expone tu UI
+	// Propiedades que expone la UI
 	property bool isLoading: false
 	property string errorMessage: ""
 	property string currentConditions: ""
 	property real currentTemp: 0
 	property string oberservationTimestamp: ""
-//	property string todaysForec
 	property string currentConditionIconName: "weather-none-available"
 
 	// Modelos de datos
@@ -95,7 +94,7 @@ QtObject {
 			activeProvider.destroy()
 		}
 
-		// Usa los valores actuales, no los iniciales
+		// Usa valores actuales, no los iniciales
 		var currentLat = latitude !== undefined ? latitude : plasmoid.configuration.latitude || 0
 		var currentLon = longitude !== undefined ? longitude : plasmoid.configuration.longitude || 0
 		var currentPlaceId = locationId || ("lat=" + currentLat + "&lon=" + currentLon + "&altitude=0")
@@ -151,7 +150,7 @@ QtObject {
 
 			currentTemp: currentWeather.temperature || 0
 			todaysForecastLabel: currentConditions || ""
-			location: plasmoid.configuration.cityName // || "Burgos"
+			location: plasmoid.configuration.cityName
 			currentConditionIconName = currentWeather.iconName || "weather-none-available" // MetNo
 			(activeProvider.currentWeatherModel?.iconName) || "weather-none-available" // owm
 
@@ -223,7 +222,7 @@ QtObject {
 	}
 
 	// ------------------------------------------------------------------
-	// Utilidades para mostrar (manteniendo compatibilidad con tu UI)
+	//                    Utilidades para mostrar
 	// ------------------------------------------------------------------
 	function formatTemp(value, rounded, degreesOnly) {
 		if (!value && value !== 0) return "N/A"
@@ -242,7 +241,7 @@ QtObject {
     return displayUnits.formatTemperature(value, true)
 }
 
-	// Función para velocidad del viento (si la necesita Baro.qml)
+	// Función para velocidad del viento
 	function intWindSpeed() {
 		if (!currentWeather.windSpeedMps && currentWeather.windSpeedMps !== 0) return 0
 		return Math.round(displayUnits.convertWindSpeed(currentWeather.windSpeedMps))
@@ -269,7 +268,7 @@ QtObject {
 	}
 
 	// ------------------------------------------------------------------
-	// Timer para actualización automática
+	//               Timer para actualización automática
 	// ------------------------------------------------------------------
 	property int updateIntervalMinutes: 30
 	property Timer updateTimer: Timer {
@@ -280,7 +279,7 @@ QtObject {
 	}
 
 	// ==================================================================
-	// Conectar cambios de configuración
+	//               Conectar cambios de configuración
 	// ==================================================================
 	onLocationIdChanged: {
 //		console.log("locationId changed to:", locationId)

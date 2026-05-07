@@ -34,8 +34,8 @@ GridLayout {
 						if (!item) return ""
 						return item.forecastIcon
 				}
-				Layout.preferredWidth: 64
-				Layout.preferredHeight: 50
+				Layout.preferredWidth: 64 * scaleFactor
+				Layout.preferredHeight: 50 * scaleFactor
 			}
 
 			Text {
@@ -89,8 +89,8 @@ GridLayout {
 						if (!item) return ""
 						return item.forecastIcon
 				}
-				Layout.preferredWidth: 64
-				Layout.preferredHeight: 50
+				Layout.preferredWidth: 64 * scaleFactor
+				Layout.preferredHeight: 50 * scaleFactor
 			}
 
 			Text {
@@ -143,8 +143,8 @@ GridLayout {
 						if (!item) return ""
 						return item.forecastIcon
 				}
-				Layout.preferredWidth: 64
-				Layout.preferredHeight: 50
+				Layout.preferredWidth: 64 * scaleFactor
+				Layout.preferredHeight: 50 * scaleFactor
 			}
 
 			Text {
@@ -197,8 +197,8 @@ GridLayout {
 						if (!item) return ""
 							return item.forecastIcon
 				}
-				Layout.preferredWidth: 64
-				Layout.preferredHeight: 50
+				Layout.preferredWidth: 64 * scaleFactor
+				Layout.preferredHeight: 50 * scaleFactor
 			}
 
 			Text {
@@ -251,8 +251,8 @@ GridLayout {
 						if (!item) return ""
 							return item.forecastIcon
 				}
-				Layout.preferredWidth: 64
-				Layout.preferredHeight: 50
+				Layout.preferredWidth: 64 * scaleFactor
+				Layout.preferredHeight: 50 * scaleFactor
 			}
 
 			Text {

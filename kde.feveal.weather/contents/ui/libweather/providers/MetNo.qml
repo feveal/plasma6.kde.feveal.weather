@@ -17,7 +17,7 @@ property var main: QtObject {
 
 property bool useOnlineWeatherData: true
 
-// Propiedades que recibe desde WeatherData
+// Propiedades que se reciben desde WeatherData
 property string placeIdentifier: ""
 property real latitude: 0
 property real longitude: 0
@@ -39,7 +39,6 @@ property var meteogramModel: ListModel { id: meteogramListModel }
 
     property var locale: Qt.locale()
     property string providerId: 'metno'
-    // property string creditLink: 'https://www.met.no/en/About-us'
     property string urlPrefix: 'https://api.met.no/weatherapi/locationforecast/2.0/compact?'
     property string forecastPrefix: 'https://www.yr.no/en/forecast/daily-table/'
 
@@ -68,14 +67,7 @@ property var meteogramModel: ListModel { id: meteogramListModel }
     function parseDate(dateString) {
         return new Date(dateString + '.000Z')
     }
-/*
-    // ---
-    function refreshTooltipSubText() {
-        // Función requerida para compatibilidad
-        console.log("refreshTooltipSubText called (no action needed)")
-    }
-    // ---
-*/
+
     function loadDataFromInternet(successCallback, failureCallback, locationObject) {
 
         dbgprint2("loadDataFromInternet: " + currentPlace.alias)
@@ -120,11 +112,6 @@ property var meteogramModel: ListModel { id: meteogramListModel }
             TZURL = 'https://api.met.no/weatherapi/sunrise/3.0/sun?' + placeIdentifier.replace(/&altitude=[^&]+/,"") + "&date=" + formatDate(new Date().toISOString())
             TZURL += "&offset=" + calculateOffset(currentPlace.timezoneOffset)
         }
-/*
-        if (! useOnlineWeatherData) {
-            TZURL = Qt.resolvedUrl('../../code/weather/sun.json')
-        }
-    */
 //        dbgprint("Downloading Sunrise / Sunset Data from: " + TZURL)
         var xhr1 = DataLoader.fetchJsonFromInternet(TZURL, successSRAS, failureCallback)
         return [xhr1]
@@ -134,8 +121,6 @@ property var meteogramModel: ListModel { id: meteogramListModel }
 
             var readingsArray = JSON.parse(jsonString)
             updatecurrentWeather(readingsArray)
-//            buildMetogramData(readingsArray)
-//            refreshTooltipSubText()
             loadCompleted()
 
             // Procesar previsión diaria
@@ -323,7 +308,6 @@ property var meteogramModel: ListModel { id: meteogramListModel }
         function failureCallback() {
             dbgprint("DOH!")
             currentWeatherModel = emptyWeatherModel()
-            // loadingData.loadingDatainProgress=false
             main.loadingDataComplete = true
         }
 

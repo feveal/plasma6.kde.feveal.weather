@@ -109,7 +109,6 @@ Item {
 
         var versionParam = '&v=' + new Date().getTime()
 
-        // IMPORTANTE: Aquí debe usar placeIdentifier
         url1 = urlPrefix + '/weather?id=' + placeIdentifier + appIdAndModeSuffix + versionParam
         url2 = urlPrefix + '/forecast/daily?id=' + placeIdentifier + '&cnt=9' + appIdAndModeSuffix + versionParam
         url3 = urlPrefix + '/forecast?id=' + placeIdentifier + appIdAndModeSuffix + versionParam
@@ -132,6 +131,10 @@ Item {
         let obj = xmlModelCurrent.get(0)
         let obj2 = xmlModelHourByHour.get(1)
 
+        let sunRise = Date.parse(obj.rise)
+        let sunSet = Date.parse(obj.set)
+        let updated = Date.parse(obj.updated)
+        var isDaytime = (updated > sunRise && updated < sunSet)
         var weatherInfo = getWeatherInfo(obj.iconName, isDaytime)
 
         // Llenar currentWeatherModel
@@ -151,20 +154,13 @@ Item {
             temperature: parseFloat(obj2.temperature)
         }
 
-        let sunRise = Date.parse(obj.rise)
-        let sunSet = Date.parse(obj.set)
-        let updated = Date.parse(obj.updated)
-
-        // isDaytime = true si es de día, false si es de noche
-        var isDaytime = (updated > sunRise && updated < sunSet)
-
         let tzms = parseInt(obj.timezoneOffset) * 1000
 
         currentPlace.timezoneOffset = parseInt(obj.timezoneOffset)
         currentWeatherModel.sunRiseTime = new Date(sunRise + tzms).toTimeString()
         currentWeatherModel.sunSetTime = new Date(sunSet + tzms).toTimeString()
 
-        currentWeatherModel.isDay = ((updated > sunRise) && (updated < sunSet)) ? 0 : 1
+        currentWeatherModel.isDay = isDaytime ? 0 : 1
 
         dbgprint("Updated=" + new Date(updated).toTimeString() +
         "\t Sunrise=" + currentWeatherModel.sunRiseTime +
@@ -235,7 +231,6 @@ Item {
         let timezoneOffset = xmlModelCurrent.get(0).timezoneOffset
 
         let updatedDateTimeStamp = Date.parse(updatedDateTime)
-        // let updatedDateTimeStampLocal = convertToLocalTime(Date.parse(updatedDateTime),timezoneOffset * 1000)
         let updatedDateTimeStampLocal = new Date(convertToLocalTime(updatedDateTime + "Z", offset))
         let hr = new Date(updatedDateTimeStampLocal).getHours()
         let y = parseInt((hr + 3) / 6)
@@ -258,8 +253,6 @@ Item {
         // let y = parseInt((hr + 3) / 6)
 
         dbgprint2("HR = " + hr + "\tY = " + y)
-
-
 
         let ptr = 0
         let x = 0
@@ -397,7 +390,7 @@ Item {
             nextDaysData['hidden' + y] = false
 
             if (y === 3) {
-                //                dbgprint("*** Replaced ROW " + x + "\t" + nextDaysData['dayLabel'])
+                dbgprint("*** Replaced ROW " + x + "\t" + nextDaysData['dayLabel'])
                 if (x < nextDaysModel.count) {
                     nextDaysModel.remove(x, 1)
                     nextDaysModel.insert(x, nextDaysData)
@@ -410,7 +403,7 @@ Item {
             }
             ptr = ptr + 2
         }
-        //        dbgprint("nextDaysModel Count:" + nextDaysModel.count)
+        dbgprint("nextDaysModel Count:" + nextDaysModel.count)
         dbgprint2("EXIT updateNextDaysModel")
     }
 
@@ -489,9 +482,9 @@ Item {
     }
 
     function loadCompleted() {
-        //       main.loadingDataComplete = true
+//       main.loadingDataComplete = true
         dbgprint2("loadCompleted - OWM data loaded")
-        //       dataLoadedFromInternet()
+//       dataLoadedFromInternet()
     }
 
     XmlListModel {
@@ -601,9 +594,8 @@ Item {
         }
     }
 
-    // ---
     // ================================================================
-    // Modelos para exportar a WeatherData.qml
+    //          Modelos para exportar a WeatherData.qml
     // ================================================================
 
     property alias currentWeatherModel: currentWeatherModel
@@ -684,7 +676,6 @@ Item {
             info.iconName = "weather-fog"
             info.description = "Fog"
         }
-
         return info
     }
 

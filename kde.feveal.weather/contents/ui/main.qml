@@ -1,4 +1,4 @@
-// main.qml - parte modificada
+// main.qml
 
 import QtQuick
 import QtQuick.Layouts
@@ -13,18 +13,34 @@ import "libweather" as LibWeather
 PlasmoidItem {
     id: root
     Plasmoid.backgroundHints: PlasmaCore.Types.NoBackground
-
     readonly property int baseWidth: 300
     readonly property int baseHeight: 300
+    property int savedWidth: plasmoid.configuration.customWidth || baseWidth
+    property int savedHeight: plasmoid.configuration.customHeight || baseHeight
     property double scaleFactor: Math.min(width / baseWidth, height / baseHeight)
-    width: baseWidth
-    height: baseHeight
+
+    width: savedWidth
+    height: savedHeight
+
+    onWidthChanged: {
+        if (width !== savedWidth && width > 0) {
+            plasmoid.configuration.customWidth = width
+            plasmoid.configuration.write();
+        }
+    }
+
+    onHeightChanged: {
+        if (height !== savedHeight && height > 0) {
+            plasmoid.configuration.customHeight = height
+            plasmoid.configuration.write();
+        }
+    }
 
     fullRepresentation: Item {
         id: parentContainer
         anchors.fill: parent
-        Layout.preferredWidth: baseWidth * Screen.devicePixelRatio
-        Layout.preferredHeight: baseHeight * Screen.devicePixelRatio
+        Layout.preferredWidth: plasmoid.configuration.customWidth
+        Layout.preferredHeight: plasmoid.configuration.customHeight
 
         Baro {
             id: baro;
@@ -87,13 +103,10 @@ PlasmoidItem {
             }
         }
 
-        // ==================================================================
-        // NUEVO: WeatherData actualizado
-        // ==================================================================
         LibWeather.WeatherData {
             id: weatherData
 
-            // Estas propiedades deben estar en tu configuración
+            // Propiedades en configuración
             selectedProvider: plasmoid.configuration.provider || "metno"
             locationId: plasmoid.configuration.locationId || ""
             latitude: plasmoid.configuration.latitude || 0
