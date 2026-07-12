@@ -187,10 +187,10 @@ msgstr "Pocas nubes en la noche"
 
 #: ../contents/ui/moon/Moon.qml
 msgid " Lightning: "
-msgstr " Iliminacion: "
+msgstr " Iluminación: "
 
 msgid " days for "
-msgstr " dias para "
+msgstr " días para "
 
 msgid "Full Moon"
 msgstr "Luna llena"
@@ -204,14 +204,15 @@ msgstr "Cuarto creciente"
 msgid "Last Quarter"
 msgstr "Cuarto menguante"
 
-msgid "Waning Crescent"
-msgstr "Menguante"
-
-msgid "Waning Gibbous"
-msgstr "Menguante"
-
 msgid "Waxing Crescent"
-msgstr "Creciente"
+msgstr "Luna creciente"
 
 msgid "Waxing Gibbous"
-msgstr "Creciente"
+msgstr "Luna gibosa creciente"
+
+msgid "Waning Gibbous"
+msgstr "Luna gibosa menguante"
+
+msgid "Waning Crescent"
+msgstr "Luna menguante"
+
