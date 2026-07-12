@@ -78,14 +78,9 @@ PlasmoidItem {
             property var nextPhase: undefined
 
             function processXMLData(xml) {
-//                console.log("Moon XML received, length:", xml.length)
-
                 var elongationToSun = extractTagValue(xml, "elongationToSun");
                 var phase = extractTagValue(xml, "phase");
-//                console.log("Extracted phase:", phase)
-
                 var percentIlluminated = extractTagValue(xml, "percentIlluminated");
-
                 var nextPhaseSection = xml.match(/<nextPhase>([\s\S]*?)<\/nextPhase>/i);
                 var nextPhaseVal = "";
                 var daysToPhaseVal = "";
@@ -97,9 +92,18 @@ PlasmoidItem {
                 elongSun = elongationToSun;
                 percentIlu = percentIlluminated;
                 moonPhase = phase;
-//                console.log("moonPhase set to:", moonPhase)
                 daysPhase = daysToPhaseVal;
                 nextPhase = nextPhaseVal;
+
+/*
+                 // Consola para depuración para verificar los datos extraídos:
+                 console.log("Longitud de datos, Moon XML:", xml.length)
+                 console.log("Elongación:", elongSun);
+                 console.log("Iluminación:", percentIlu);
+                 console.log("Fase Actual:", moonPhase);
+                 console.log("Próxima Fase:", nextPhase);
+                 console.log("Días restantes:", daysPhase);
+*/
             }
         }
 
