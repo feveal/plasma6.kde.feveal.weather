@@ -10,23 +10,15 @@ KCM.SimpleKCM {
 
 	Kirigami.FormLayout {
 
-		// Velocidad del viento - versión QQC2.ComboBox
+		// Velocidad del viento
 		QQC2.ComboBox {
 			id: windSpeedComboBox
 			Kirigami.FormData.label: i18n("Wind speed:")
 			model: ["m/s", "km/h"]
 
-			onCurrentIndexChanged: {
-				if (enabled) {
-					plasmoid.configuration.windSpeedUnitId = currentIndex
-					console.log("Wind speed changed to:", currentText)
-				}
-			}
-
-			Component.onCompleted: {
-				currentIndex = plasmoid.configuration.windSpeedUnitId || 0
-				enabled = true
-			}
+			// Enlace bidireccional seguro
+			currentIndex: plasmoid.configuration.windSpeedUnitId
+			onActivated: (index) => { plasmoid.configuration.windSpeedUnitId = index }
 		}
 
 		// Temperatura
@@ -35,16 +27,8 @@ KCM.SimpleKCM {
 			Kirigami.FormData.label: i18n("Temperature:")
 			model: ["°C", "°F", "K"]
 
-			onCurrentIndexChanged: {
-				if (enabled) {
-					plasmoid.configuration.temperatureUnitId = currentIndex
-				}
-			}
-
-			Component.onCompleted: {
-				currentIndex = plasmoid.configuration.temperatureUnitId || 0
-				enabled = true
-			}
+			currentIndex: plasmoid.configuration.temperatureUnitId
+			onActivated: (index) => { plasmoid.configuration.temperatureUnitId = index }
 		}
 
 		// Presión
@@ -53,16 +37,8 @@ KCM.SimpleKCM {
 			Kirigami.FormData.label: i18n("Pressure:")
 			model: ["hPa", "mbar", "mmHg", "inHg"]
 
-			onCurrentIndexChanged: {
-				if (enabled) {
-					plasmoid.configuration.pressureUnitId = currentIndex
-				}
-			}
-
-			Component.onCompleted: {
-				currentIndex = plasmoid.configuration.pressureUnitId || 0
-				enabled = true
-			}
+			currentIndex: plasmoid.configuration.pressureUnitId
+			onActivated: (index) => { plasmoid.configuration.pressureUnitId = index }
 		}
 
 		// Visibilidad
@@ -71,16 +47,8 @@ KCM.SimpleKCM {
 			Kirigami.FormData.label: i18n("Visibility:")
 			model: ["km", "miles"]
 
-			onCurrentIndexChanged: {
-				if (enabled) {
-					plasmoid.configuration.visibilityUnitId = currentIndex
-				}
-			}
-
-			Component.onCompleted: {
-				currentIndex = plasmoid.configuration.visibilityUnitId || 0
-				enabled = true
-			}
+			currentIndex: plasmoid.configuration.visibilityUnitId
+			onActivated: (index) => { plasmoid.configuration.visibilityUnitId = index }
 		}
 	}
 }
